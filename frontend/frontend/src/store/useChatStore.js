@@ -17,7 +17,7 @@ export const useChatStore = create((set,get) =>({
         set({isUsersLoading: true});
 
       try {
-        const res = await axiosInstance.get("/messages/users");
+        const res = await axiosInstance.get("message/messages/users");
 
         const usersArray = Array.isArray(res.data) ? res.data : [];
      set({ users: usersArray });
@@ -34,7 +34,7 @@ export const useChatStore = create((set,get) =>({
       set({isMessagesLoading: true});
 
       try {
-          const res = await axiosInstance.get(`/messages/${userId}`);
+          const res = await axiosInstance.get(`message/messages/${userId}`);
           set({messages: res.data});
       } catch (error) {
         toast.error("Error in finding messages");
@@ -47,7 +47,7 @@ export const useChatStore = create((set,get) =>({
 
       try {
          
-           const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`,messageData);
+           const res = await axiosInstance.post(`message/messages/send/${selectedUser._id}`,messageData);
            console.log(res);
            set({messages:[...messages,res.data]});
            console.log(messages);

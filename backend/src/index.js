@@ -29,7 +29,7 @@ app.use(cors({
 
 
 app.use('/api/auth',authRouter);
-app.use('/api/messages',messageRouter);  
+app.use('/api/message',messageRouter);  
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(__frontendDist));
