@@ -12,7 +12,7 @@ const cors = require("cors");
 
 dotenv.config();
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 const PORT = process.env.PORT;
 
 app.use(express.json({limit:"10mb"}));
