@@ -18,13 +18,13 @@ const getUsersForSidebar= async(req,res)=>{
 } 
 const getMessages= async(req,res)=>{
     try{
-   const {id} = req.params;
+   const {userId} = req.params;
    const sender = req.user._id;
 
    const messages  = await Message.find({
     $or:[
-        {senderId:sender, receiverId:id},
-        {senderId:id , receiverId:sender}
+        {senderId:sender, receiverId:userId},
+        {senderId:userId , receiverId:sender}
     ]
    });
   res.status(200).json(messages);
@@ -39,7 +39,7 @@ const sendMessage  = async(req,res)=>{
     try {
 
         const {text,image} = req.body;
-        const {id: receiverId} = req.params;
+        const {userId: receiverId} = req.params;
         const senderId = req.user._id;
 
         let imageUrl;

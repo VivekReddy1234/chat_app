@@ -10,9 +10,9 @@ const { getUsersForSidebar , sendMessage,getMessages} = require("../Controllers/
 router.get('/users',protectRoute,getUsersForSidebar);
 
 // when selected a user you need to show messages from both sides 
-router.get('/:id',protectRoute,getMessages);
+router.get('/:userId',protectRoute,getMessages);
 
-router.post('/send/:id',protectRoute,sendMessage);
+router.post('/send/:userId',protectRoute,sendMessage);
 
 
 
