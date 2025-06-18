@@ -10,6 +10,9 @@ const cookieParser= require("cookie-parser");
 const cors = require("cors");
 
 
+const __frontendDist = path.join(__dirname, "../../frontend/frontend/dist");
+
+
 dotenv.config();
 
 // const __dirname = path.resolve();
@@ -28,13 +31,13 @@ app.use(cors({
 app.use('/api/auth',authRouter);
 app.use('/api/messages',messageRouter);  
 
- if(process.env.NODE_ENV==="production"){
-    app.use(express.static(path.join(__dirname,"../frontend/frontend/dist")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(__frontendDist));
 
-    app.get('*',(req,res)=>{
-        res.sendFile(path.join(__dirname,"../frontend/frontend/dist/index.html"));
-    })
- }
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__frontendDist, "index.html"));
+  });
+}
 
 app.get('/',(req,res)=>{
     console.log("helloo");
