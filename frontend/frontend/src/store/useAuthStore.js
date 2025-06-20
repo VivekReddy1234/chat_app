@@ -52,6 +52,7 @@ export const useAuthStore = create((set,get)=>({
         
     } catch (error) {
         toast.error("There is a error");
+        console.log(error);
         
     }
     finally{
@@ -74,6 +75,7 @@ export const useAuthStore = create((set,get)=>({
         
     } catch (error) {
          toast.error("Error in Login ");
+         console.log(error);
     }finally{
         set({isLoggingIn: false});
     }

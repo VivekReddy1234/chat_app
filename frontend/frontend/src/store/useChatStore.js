@@ -24,6 +24,7 @@ export const useChatStore = create((set,get) =>({
         
       } catch (error) {
          toast.error("Error occurred in finding users");
+         console.log(error);
       }finally{
         set({isUsersLoading: false});
       }
